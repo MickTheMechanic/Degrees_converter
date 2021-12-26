@@ -4,7 +4,9 @@
 void convert_degrees (float angle, char *buffer) {
   float degrees = (int)angle;
   float decimal = angle - (float)degrees;
-  degrees = angle - decimal;
+  degrees = angle;
+  if (degrees < 0.0 && degrees > -1.0) degrees = -0.1;
+  else degrees = degrees - decimal;
   uint8_t minutes = fabs (decimal * 60.f);
   minutes = minutes + 5 / 2;
   minutes -= minutes % 5;
